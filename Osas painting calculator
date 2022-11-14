@@ -1,0 +1,72 @@
+
+// Program description: 
+// Program description: Creating paint calculator to make company's work easier
+ 
+import java.util.Scanner;
+import java.lang.Math;
+
+public class PaintCalculator {
+   public static final int NUM_WALLS = 4;
+   public static final double SQUARE_FEET_PER_GALLON = 350;  
+
+   public static void main(String[] args) {
+      Scanner console = new Scanner(System.in);
+
+      double wallHeight = getWallHeight(console);
+      double wallWidth = getWallWidth(console);
+      double wallArea = calcWallArea(wallHeight, wallWidth);
+      double gallonsPaintNeeded = calcGallons(wallArea);
+      displayResults(wallArea, gallonsPaintNeeded);
+}
+
+   /**
+    * Prompts and returns the wall height
+    * @param  console A Scanner object for console (or keyboard) input.
+    * @return         The wall height in feet.
+    */
+   public static double getWallHeight(Scanner console) {
+      System.out.print("Enter wall height (feet): ");
+      double wallHeight = console.nextDouble();
+      return wallHeight;
+   }
+
+   /**
+    * Prompts and returns the wall width
+    * @param  console A Scanner object for console (or keyboard) input.
+    * @return         The wall width in feet.
+    */
+    public static double getWallWidth(Scanner console) {
+      System.out.print("Enter wall width (feet): ");
+      double wallWidth = console.nextDouble();
+      return wallWidth;
+    }
+   
+   /**
+    *Calculates WallArea from retured value and returns results
+    */
+    public static double calcWallArea(double wallHeight, double wallWidth) {
+      double wallArea = wallHeight * wallWidth;
+      return (wallArea);
+    }
+    
+   /**
+    * calculates calcGallons and returns value.
+    */
+    public static double calcGallons(double wallArea) {
+      double gallonsPaintNeeded = (wallArea * NUM_WALLS) / SQUARE_FEET_PER_GALLON;
+      return gallonsPaintNeeded;
+    }
+    
+    /**
+     * printing results to user.
+     */
+     public static void displayResults(double wallArea, double gallonsPaintNeeded) {
+      System.out.println("The wall area is " + wallArea + " square feet");
+      System.out.printf("The paint needed (assuming 4 walls) is %.2f gallons\n", gallonsPaintNeeded);
+      System.out.println("The number of cans to purchase is " + (int) Math.ceil(gallonsPaintNeeded) + " can(s)");
+     }
+}  
+
+
+
+
